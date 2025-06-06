@@ -11,7 +11,7 @@ class Solution637 {
         int sum=0;
 
         if (root==null){
-            return new ArrayList<>(){};
+            return new ArrayList<>();
         }
         Queue<TreeNode> que=new LinkedList<>();
         que.offer(root);
