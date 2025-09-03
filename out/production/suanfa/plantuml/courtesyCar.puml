@@ -1,0 +1,70 @@
+@startuml
+actor "Service Store" as Store
+participant "System" as System
+participant "Warranty Manager (Region)" as RegionApprover
+participant "Warranty Claim Specialist (HQ)" as HQApprover
+
+== 新建代步车索赔单 ==
+Store -> System: 打开Create Courtesy Car Claim页面
+System --> Store: 显示查询页面
+Store -> System: 点击Add按钮
+System --> Store: 跳转至Add页面
+
+Store -> System: 填写索赔单信息
+System --> Store: 自动填充门店信息（名称/地址）
+Store -> System: 保存草稿
+
+== 提交审批流程 ==
+Store -> System: 点击Submit按钮
+System -> System: 验证必填字段
+alt 验证通过
+    System -> System: 状态更新为Pending(ARA)
+    System --> Store: 显示提交成功
+    System -> RegionApprover: 发送审批提醒(Courtesy Car Claim Reminder)
+else 验证失败
+    System --> Store: 显示错误提示
+end
+
+== 区域审批 ==
+RegionApprover -> System: 登录审批页面
+System --> RegionApprover: 显示待审批列表
+RegionApprover -> System: 点击查看详情
+System --> RegionApprover: 显示索赔单详情（含可编辑Unit Price）
+
+alt 审批操作
+    RegionApprover -> System: 修改Unit Price (可选)
+    RegionApprover -> System: 点击Approve
+    System -> System: 状态更新为Pending(HQ)
+    System --> RegionApprover: 显示审批结果
+else
+    RegionApprover -> System: 点击Return/Reject
+    System -> System: 状态更新为相应状态
+    System --> RegionApprover: 显示操作结果
+end
+
+== 总部审批 ==
+HQApprover -> System: 登录审批页面
+System --> HQApprover: 显示Pending(HQ)列表
+HQApprover -> System: 点击查看详情
+System --> HQApprover: 显示索赔单详情（Unit Price不可编辑）
+
+alt 审批操作
+    HQApprover -> System: 点击Approve
+    System -> System: 状态更新为Approved
+    System -> System: 记录结算状态Settlement Status=Yes
+    System --> HQApprover: 显示审批结果
+else
+    HQApprover -> System: 点击Return/Reject
+    System -> System: 状态更新为相应状态
+    System --> HQApprover: 显示操作结果
+end
+
+== 异常处理 ==
+Store -> System: 点击Cancel (Draft状态)
+System -> System: 状态更新为Cancelled
+System --> Store: 显示操作结果
+
+Store -> System: 提交非Draft状态索赔单
+System --> Store: 显示Toast提示"无法提交"
+
+@enduml

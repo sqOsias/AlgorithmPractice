@@ -1,4 +1,4 @@
-package LingBinaryAlgorithm.BinaryAnswer;
+package LingBinaryAlgorithm.BinarySearch;
 
 import java.util.Arrays;
 

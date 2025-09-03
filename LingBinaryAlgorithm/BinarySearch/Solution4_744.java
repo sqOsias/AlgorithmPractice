@@ -1,4 +1,4 @@
-package LingBinaryAlgorithm.BinaryAnswer;
+package LingBinaryAlgorithm.BinarySearch;
 
 /**
  * 给你一个字符数组 letters，该数组按非递减顺序排序，以及一个字符 target。letters 里至少有两个不同的字符。

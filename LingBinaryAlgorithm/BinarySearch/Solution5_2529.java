@@ -1,4 +1,4 @@
-package LingBinaryAlgorithm.BinaryAnswer;
+package LingBinaryAlgorithm.BinarySearch;
 
 /**
  * 给你一个按 非递减顺序 排列的数组 nums ，返回正整数数目和负整数数目中的最大值。
