@@ -21,12 +21,12 @@ class Solution139 {
 
     }
 
-    public static void main(String[] args) {
-        Solution139 solution139 = new Solution139();
-        System.out.println(solution139.wordBreak("leetcode", List.of("leet","code")));
-        solution139.wordBreak("applepenapple", List.of("apple","pen"));
-        solution139.wordBreak("catsandog", List.of("cats","dog","sand","and","cat"));
-        solution139.wordBreak("cars", List.of("car","ca","rs"));
-
-    }
+//    public static void main(String[] args) {
+//        Solution139 solution139 = new Solution139();
+//        System.out.println(solution139.wordBreak("leetcode", List.of("leet","code")));
+//        solution139.wordBreak("applepenapple", List.of("apple","pen"));
+//        solution139.wordBreak("catsandog", List.of("cats","dog","sand","and","cat"));
+//        solution139.wordBreak("cars", List.of("car","ca","rs"));
+//
+//    }
 }
