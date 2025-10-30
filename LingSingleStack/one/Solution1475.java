@@ -1,4 +1,4 @@
-package LingSingleStackOne;
+package LingSingleStack.one;
 
 import java.util.ArrayDeque;
 import java.util.Deque;

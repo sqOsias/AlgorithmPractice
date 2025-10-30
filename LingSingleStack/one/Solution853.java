@@ -1,4 +1,4 @@
-package LingSingleStackOne;
+package LingSingleStack.one;
 
 import java.util.*;
 
